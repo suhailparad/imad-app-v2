@@ -49,7 +49,7 @@ function getArticles(data){
 
 app.get('/:articleName',function(req,res){
     var articleName=req.params.articleName;
-    res.sent(getArticles(articles[articleName]));
+    res.send(getArticles(articles[articleName]));
 });
 
 app.get('/ui/style.css', function (req, res) {
