@@ -9,24 +9,48 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-function getTemplate(data){
+var article={
+    'article-one':{
+        title:"Article One | Muhammed Suhail",
+        heading:"Article One",
+        content:`
+            <p>This is article one</p>
+        `
+    },
+    'article-two':{
+        title:"Article Two | Muhammed Suhail",
+        heading:"Article Two",
+        content:`
+            <p>this is article two</p>
+        `
+    }
+};
+function getArticles(data){
+    var title=data.title;
+    var heading=data.heading;
+    var content=data.content;
     var htmlTemplate=`
         <html>
             <head>
+                <title>${title}</title>
             </head>
+            
             <body>
             
                 <div class="content">
-                    <h2> Welcome to Article One </h2>        
+                    <h2> Welcome to ${heading} </h2>
+                    ${content}
                 </div>
-                
             </body>
         </html>
-    `
+    `;
     return htmlTemplate;
 }
 
-var htmlTemplate;
+app.get('/:articleName',function(req,res){
+    var articleName=req.param.articleName;
+    res.sent(getArticles(articles[articleName]));
+});
 
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
