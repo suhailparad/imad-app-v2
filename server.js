@@ -48,7 +48,7 @@ function getArticles(data){
 }
 
 app.get('/:articleName',function(req,res){
-    var articleName=req.param.articleName;
+    var articleName=req.params.articleName;
     res.sent(getArticles(articles[articleName]));
 });
 
