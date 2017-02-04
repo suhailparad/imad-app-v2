@@ -9,6 +9,25 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
+function getTemplate(data){
+    var htmlTemplate=`
+        <html>
+            <head>
+            </head>
+            <body>
+            
+                <div class="content">
+                    <h2> Welcome to Article One </h2>        
+                </div>
+                
+            </body>
+        </html>
+    `
+    return htmlTemplate;
+}
+
+var htmlTemplate;
+
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
 });
