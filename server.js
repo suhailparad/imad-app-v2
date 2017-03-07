@@ -1,7 +1,7 @@
 var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
-var Pool=require('pg').Pool;
+var Pool = require('pg').Pool;
 
 var config={
     user:'suhailparad',
@@ -30,44 +30,6 @@ app.get('/testdb',function(req,res){
         
     });    
 });
-
-var articles={
-    'article-one':{
-        title:"Article One | Muhammed Suhail",
-        heading:"Article One",
-        content:`
-            <p>This is article one</p>
-        `
-    },
-    'article-two':{
-        title:"Article Two | Muhammed Suhail",
-        heading:"Article Two",
-        content:`
-            <p>this is article two</p>
-        `
-    }
-};
-function getArticles(data){
-    var title=data.title;
-    var heading=data.heading;
-    var content=data.content;
-    var htmlTemplate=`
-        <html>
-            <head>
-                <title>${title}</title>
-            </head>
-            
-            <body>
-            
-                <div class="content">
-                    <h2> Welcome to ${heading} </h2>
-                    ${content}
-                </div>
-            </body>
-        </html>
-    `;
-    return htmlTemplate;
-}
 
 
 app.get('/ui/style.css', function (req, res) {
